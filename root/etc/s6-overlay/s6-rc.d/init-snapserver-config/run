@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+# copy config
+if [[ ! -e /config/snapserver.conf ]]; then
+    cp /etc/snapserver.conf /config/snapserver.conf
+fi
+
+ln -sf /config/snapserver.conf /etc/snapserver.conf
+
+# permissions
+lsiown -R abc:abc \
+    /config
